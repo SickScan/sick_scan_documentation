@@ -8,9 +8,10 @@ Welcome to SSBL's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
-
-
+   :caption: Introduction
+   
+   getting-started
+   
 
 Indices and tables
 ==================
