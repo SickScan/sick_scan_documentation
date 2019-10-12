@@ -7,7 +7,9 @@
 # GenerateDocumentation()
 #######################################################################################################
 function(GenerateDocumentation)
-
+  
+  set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+  
   find_package(Doxygen)
   if (DOXYGEN_FOUND)
     set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/doxygen/Doxyfile.in)
@@ -17,6 +19,8 @@ function(GenerateDocumentation)
       COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
       VERBATIM )
+    set_target_properties (RunDoxygen PROPERTIES FOLDER Documentation)
+      
   else ()
     message(STATUS "GenerateDocumentation: Doxygen was not found")
     message(STATUS "GenerateDocumentation: Not creating target GenerateDoxygenDocumentation")
@@ -35,6 +39,7 @@ function(GenerateDocumentation)
                       ${SPHINX_SOURCE} ${SPHINX_BUILD}
                       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
                       DEPENDS  RunDoxygen)
+    set_target_properties (RunSphinx PROPERTIES FOLDER Documentation)
   else ()
     message(STATUS "GenerateDocumentation: Sphinx was not found")
     message(STATUS "GenerateDocumentation: Not creating target Sphinx")
