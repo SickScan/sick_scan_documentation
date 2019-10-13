@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to SSBL's documentation!
+SICK AG Scan Base Library (SSBL)
 ================================
 
 .. toctree::
@@ -12,17 +12,4 @@ Welcome to SSBL's documentation!
    
    getting-started
    
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
- 
-Docs
-====
- 
-.. doxygenclass:: ssbl::SickLidar2d
-   :members: 
+   :caption: API

@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'SSBL'
+project = 'Sick Scan Base Library'
 copyright = '2019, SICK AG'
 author = 'SICK AG'
 
@@ -85,9 +85,6 @@ html_theme = 'sphinx_rtd_theme'
 #
 #html_theme_options = {}
 
-html_theme_options = {
-    'logo_only': True
-}
 
 html_logo = "_static/img/SICK_Logo_Claim_RGB.png"
 
