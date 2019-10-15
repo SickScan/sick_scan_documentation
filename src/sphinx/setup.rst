@@ -1,6 +1,6 @@
-=====
-Setup
-=====
+=============
+Prerequisites
+=============
 
 System Requirements
 ===================

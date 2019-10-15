@@ -47,8 +47,8 @@ Then checkout the sources:
   Unpacking objects: 100% (37/37), done.
   git fetch --all
 
-Building and Installing SSBL
-============================
+Build and Install SSBL
+=======================
 
 Building and installing the library involves the following two CMake steps:
 
@@ -127,5 +127,9 @@ The installation directory can be changed by adding:
 
 
 
-Building the Samples
-====================
+Build the Samples
+=================
+
+
+
+

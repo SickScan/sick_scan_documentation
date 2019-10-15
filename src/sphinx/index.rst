@@ -18,7 +18,9 @@ SICK AG Scan Base Library (SSBL)
    :maxdepth: 2
    :caption: Samples
    
-   samples
+   samples-basic
+   samples-advanced
+     
 
 .. toctree::
    :maxdepth: 2
