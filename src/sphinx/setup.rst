@@ -24,7 +24,7 @@ On Linux you can simply type:
 
 .. code-block:: console
 
-  sudo apt-get install cmake git python3
+  sudo apt-get install cmake git python3 python3-pip
 
 
 
