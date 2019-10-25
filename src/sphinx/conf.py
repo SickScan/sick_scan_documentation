@@ -130,7 +130,7 @@ html_theme = 'sphinx_rtd_theme'
 #html_theme_options = {}
 
 html_favicon = "_static/img/favicon.png"
-html_logo = "_static/img/SICK_Logo_Claim_RGB.png"
+html_logo = "_static/img/home.png"
 
 html_show_sourcelink = False
 
