@@ -15,54 +15,50 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-
+#
+# Taken a lot from:
+# https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/
 
 import subprocess, os, shutil
 
 def configureDoxyfile(input_dir, output_dir):
-    doxyFile = os.path.dirname(os.path.realpath(__file__)) + "/../doxygen/Doxyfile.in"
+  doxyFile = os.path.dirname(os.path.realpath(__file__)) + "/../doxygen/Doxyfile.in"
 
-    with open(doxyFile, 'r') as file :
-        filedata = file.read()
- 
-    filedata = filedata.replace('@DOXYGEN_INPUT_DIR@', input_dir)
-    filedata = filedata.replace('@DOXYGEN_OUTPUT_DIR@', output_dir)
- 
-    with open('Doxyfile', 'w') as file:
-        file.write(filedata)
+  with open(doxyFile, 'r') as file :
+    filedata = file.read()
+  
+  print(filedata)
+
+  filedata = filedata.replace('@SSBL_CHECKOUT_DIR@', input_dir)
+  filedata = filedata.replace('@CMAKE_CURRENT_BINARY_DIR@', output_dir)
+
+  with open('Doxyfile', 'w') as file:
+      file.write(filedata)
 
 def execute(cmd, silent=False):
-    if silent:
-        devnull = open(os.devnull, 'wb')
-        stdout = devnull
-    else:
-        stdout = None
-    ret = subprocess.call(cmd.split(), stdout=stdout)
-    if silent:
-        devnull.close()
-    return ret
-    
+  if silent:
+    devnull = open(os.devnull, 'wb')
+    stdout = devnull
+  else:
+    stdout = None
+  ret = subprocess.call(cmd.split(), stdout=stdout)
+  if silent:
+    devnull.close()
+  return ret
   
-# Check if we're running on Read the Docs' servers
 read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
- 
 breathe_projects = {}
  
- 
- 
 if read_the_docs_build:
-    input_dir = os.path.dirname(os.path.realpath(__file__)) + "/../../build/ssbl"
-    
-    if os.path.exists(input_dir):
-        shutil.rmtree(input_dir)     
-        
-    execute("git clone {} {}".format("https://github.com/SickScan/sick_scan_base.git", input_dir))
-    
-    
-    output_dir = os.path.dirname(os.path.realpath(__file__)) + "/../../build/doxygen"
-    configureDoxyfile(input_dir, output_dir)
-    subprocess.call('doxygen', shell=True)
-    breathe_projects['SSBL'] = output_dir + '/xml'
+  input_top_dir = os.path.dirname(os.path.realpath(__file__)) + "/../../build"
+  input_dir = input_top_dir +"/ssbl"
+  output_dir = input_top_dir
+  if os.path.exists(input_top_dir):
+    shutil.rmtree(input_top_dir)     
+  execute("git clone {} {}".format("https://github.com/SickScan/sick_scan_base.git", input_dir))
+  configureDoxyfile(input_dir, output_dir)
+  subprocess.call('doxygen', shell=True)
+  breathe_projects['SSBL'] = output_dir + '/xml'
 
     
 # -- Project information -----------------------------------------------------
