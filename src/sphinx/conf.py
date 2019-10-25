@@ -17,7 +17,7 @@
 # sys.path.insert(0, os.path.abspath('.'))
 
 
-import subprocess, os, git
+import subprocess, os, shutil
 
 def configureDoxyfile(input_dir, output_dir):
     doxyFile = os.path.dirname(os.path.realpath(__file__)) + "/../doxygen/Doxyfile.in"
@@ -31,15 +31,34 @@ def configureDoxyfile(input_dir, output_dir):
     with open('Doxyfile', 'w') as file:
         file.write(filedata)
 
+def execute(cmd, silent=False):
+    if silent:
+        devnull = open(os.devnull, 'wb')
+        stdout = devnull
+    else:
+        stdout = None
+    ret = subprocess.call(cmd.split(), stdout=stdout)
+    if silent:
+        devnull.close()
+    return ret
+    
+  
 # Check if we're running on Read the Docs' servers
 read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
  
 breathe_projects = {}
  
+ 
+ 
 if read_the_docs_build:
     input_dir = os.path.dirname(os.path.realpath(__file__)) + "/../../build/ssbl"
-    git.Git(input_dir).clone("https://github.com/SickScan/sick_scan_base.git")
-
+    
+    if os.path.exists(input_dir):
+        shutil.rmtree(input_dir)     
+        
+    execute("git clone {} {}".format("https://github.com/SickScan/sick_scan_base.git", input_dir))
+    
+    
     output_dir = os.path.dirname(os.path.realpath(__file__)) + "/../../build/doxygen"
     configureDoxyfile(input_dir, output_dir)
     subprocess.call('doxygen', shell=True)

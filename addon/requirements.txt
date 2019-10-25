@@ -2,4 +2,3 @@ sphinx
 breathe
 exhale 
 sphinx_rtd_theme
-git
