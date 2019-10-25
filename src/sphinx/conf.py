@@ -26,9 +26,6 @@ def configureDoxyfile(input_dir, output_dir):
 
   with open(doxyFile, 'r') as file :
     filedata = file.read()
-  
-  print(filedata)
-
   filedata = filedata.replace('@SSBL_CHECKOUT_DIR@', input_dir)
   filedata = filedata.replace('@CMAKE_CURRENT_BINARY_DIR@', output_dir)
 
