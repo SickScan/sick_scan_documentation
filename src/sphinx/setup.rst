@@ -12,10 +12,10 @@ System Requirements
 
 - Required Tools
 
-  - `GIT <https://git-scm.com/downloads>`_
+  - `GIT (>=2.17.1) <https://git-scm.com/downloads>`_
   - `CMake (>= V3.10) <https://cmake.org/download>`_ 
   - `Python (>= V3.7) <https://www.python.org/downloads/>`_ (optional)
-  - `Ninja <https://ninja-build.org>`_ (Linux)
+  - `Ninja (>= 1.8.2) <https://ninja-build.org>`_ (Linux)
   
 .. note::
   You are not required to add the tools to your system's path, but throughout the documentation we assume that they are.
@@ -25,7 +25,6 @@ On Linux you can simply type:
 .. code-block:: console
 
   sudo apt-get install cmake git python3 python3-pip
-
 
 
 Pick your IDE / Compiler

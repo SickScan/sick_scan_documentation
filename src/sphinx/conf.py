@@ -17,6 +17,35 @@
 # sys.path.insert(0, os.path.abspath('.'))
 
 
+import subprocess, os, git
+
+def configureDoxyfile(input_dir, output_dir):
+    doxyFile = os.path.dirname(os.path.realpath(__file__)) + "/../doxygen/Doxyfile.in"
+
+    with open(doxyFile, 'r') as file :
+        filedata = file.read()
+ 
+    filedata = filedata.replace('@DOXYGEN_INPUT_DIR@', input_dir)
+    filedata = filedata.replace('@DOXYGEN_OUTPUT_DIR@', output_dir)
+ 
+    with open('Doxyfile', 'w') as file:
+        file.write(filedata)
+
+# Check if we're running on Read the Docs' servers
+read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+ 
+breathe_projects = {}
+ 
+if read_the_docs_build:
+    input_dir = os.path.dirname(os.path.realpath(__file__)) + "/../../build/ssbl"
+    git.Git(input_dir).clone("https://github.com/SickScan/sick_scan_base.git")
+
+    output_dir = os.path.dirname(os.path.realpath(__file__)) + "/../../build/doxygen"
+    configureDoxyfile(input_dir, output_dir)
+    subprocess.call('doxygen', shell=True)
+    breathe_projects['SSBL'] = output_dir + '/xml'
+
+    
 # -- Project information -----------------------------------------------------
 
 project = 'Sick Scan Base Library'
