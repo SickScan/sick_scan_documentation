@@ -13,7 +13,6 @@ SICK AG Scan Base Library (SSBL)
   This documentation accompanies the repositories at `https://github.com/SickScan <https://github.com/SickScan>`_. Everything found here is in an experimental stage and is subject to be changed. 
   If you’re looking for C++ / ROS drivers please consider the released repositories `sick_scan_base <https://github.com/SICKAG/sick_scan_base>`_ or `sick_scan <https://github.com/SICKAG/sick_scan>`_ until we are ready to replace / update them.
 
-
 .. toctree::
     :maxdepth: 2
     :caption: Introduction
@@ -21,7 +20,6 @@ SICK AG Scan Base Library (SSBL)
     Introduction/directions
     Introduction/contributing
     Introduction/supported_sensors
-
 
 .. toctree::
     :maxdepth: 2

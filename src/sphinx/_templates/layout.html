@@ -2,7 +2,6 @@
   {% block footer %} {{ super() }}
 
   <style>
-    /* Sidebar header (and topbar for mobile) */
     .wy-side-nav-search, .wy-nav-top {
       background: #FFFFFF;
     }
@@ -13,11 +12,9 @@
       color: #737f85;
     }
     
-    /* Sidebar */
     .wy-nav-side {
       background: #007CC1;
     }
-    /* Headers */
     .wy-menu-vertical header, .wy-menu-vertical p.caption {
       color: #F39100;
     }
@@ -29,6 +26,28 @@
       color: #F39100;
     }
 
-    
+    @font-face {
+      font-family: 'architects_daughterregular';
+      src: url('_static/font/Architects_Daughter/ArchitectsDaughter-Regular.ttf')  format('truetype'),
+           url('_static/font/Architects_Daughter/ArchitectsDaughter-Regular.woff2') format('woff2'),
+           url('_static/font/Architects_Daughter/ArchitectsDaughter-Regular.woff') format('woff'),
+           url('../_static/font/Architects_Daughter/ArchitectsDaughter-Regular.ttf')  format('truetype'),
+           url('../_static/font/Architects_Daughter/ArchitectsDaughter-Regular.woff2') format('woff2'),
+           url('../_static/font/Architects_Daughter/ArchitectsDaughter-Regular.woff') format('woff'),
+           url('../../_static/font/Architects_Daughter/ArchitectsDaughter-Regular.ttf')  format('truetype'),
+           url('../../_static/font/Architects_Daughter/ArchitectsDaughter-Regular.woff2') format('woff2'),
+           url('../../_static/font/Architects_Daughter/ArchitectsDaughter-Regular.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+
+    }
+
+
+    h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend {
+      font-family: 'architects_daughterregular';
+      color: #007CC1;
+    }
+
+
   </style>
 {% endblock %}
