@@ -13,13 +13,44 @@ SICK AG Scan Base Library (SSBL)
   This documentation accompanies the repositories at `https://github.com/SickScan <https://github.com/SickScan>`_. Everything found here is in an experimental stage and is subject to be changed. 
   If you’re looking for C++ / ROS drivers please consider the released repositories `sick_scan_base <https://github.com/SICKAG/sick_scan_base>`_ or `sick_scan <https://github.com/SICKAG/sick_scan>`_ until we are ready to replace / update them.
 
-.. toctree::
-    :maxdepth: 2
-    :caption: Introduction
+.. raw:: html
 
-    Introduction/directions
-    Introduction/contributing
-    Introduction/supported_sensors
+   <ul class="grid">
+      <li class="grid-item">
+	      <a href="Introduction/directions.html">
+	      <img alt="" src="_static/img/Information.png"/>
+	      <h2>Introduction</h2>
+	      </a>
+	      <p>Introducing the Zephyr Project: overview, architecture, features, and licensing</p>
+     </li>
+      <li class="grid-item">
+	      <a href="Library/prerequisites.html">
+	      <img alt="" src="_static/img/Information.png"/>
+	      <h2>Introduction</h2>
+	      </a>
+	      <p>Introducing the Zephyr Project: overview, architecture, features, and licensing</p>
+     </li>
+     <li class="grid-item">
+	      <a href="Frameworks/ros/ros.html">
+	      <img alt="" src="_static/img/Frameworks.png"/>
+	      <h2>Frameworks</h2>
+	      </a>
+	      <p>Introducing the Zephyr Project: overview, architecture, features, and licensing</p>
+     </li>
+  </ul> 
+
+.. toctree::
+  :hidden:
+  
+  self
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Introduction
+
+  Introduction/directions
+  Introduction/contributing
+  Introduction/supported_sensors
 
 .. toctree::
     :maxdepth: 2
@@ -36,6 +67,5 @@ SICK AG Scan Base Library (SSBL)
 
     Frameworks/ros/ros
     Frameworks/isaac/isaac
-
 
 

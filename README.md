@@ -1,5 +1,7 @@
 # SICK AG Scan Base Documentation Build
 
+**Experimental support for TiM5xx Family !!!**
+
 ## Prerequisites
 
 The following tools are required to build the documentation:
