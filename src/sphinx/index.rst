@@ -18,16 +18,18 @@ SICK AG Scan Base Library (SSBL)
     :maxdepth: 2
     :caption: Introduction
 
-    directions
+    Introduction/directions
+    Introduction/contributing
+    Introduction/supported_sensors
 
 
 .. toctree::
     :maxdepth: 2
     :caption: Scan Base Library
 
-    prerequisites
-    getting-started
-    samples-basic
+    Library/prerequisites
+    Library/getting-started
+..   samples-basic
     samples-advanced
 
 .. toctree::
