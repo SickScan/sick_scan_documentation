@@ -21,21 +21,21 @@ SICK AG Scan Base Library (SSBL)
 	      <img alt="" src="_static/img/Information.png"/>
 	      <h2>Introduction</h2>
 	      </a>
-	      <p>Introducing the Zephyr Project: overview, architecture, features, and licensing</p>
+	      <p>General Information: Overview, Supported Hardware and Licensing</p>
      </li>
       <li class="grid-item">
 	      <a href="Library/prerequisites.html">
-	      <img alt="" src="_static/img/Information.png"/>
-	      <h2>Introduction</h2>
+	      <img alt="" src="_static/img/Library.png"/>
+	      <h2>Scan Base Library</h2>
 	      </a>
-	      <p>Introducing the Zephyr Project: overview, architecture, features, and licensing</p>
+	      <p>C++ Library: Getting Started, Build Instructions and Samples</p>
      </li>
      <li class="grid-item">
 	      <a href="Frameworks/ros/ros.html">
 	      <img alt="" src="_static/img/Frameworks.png"/>
 	      <h2>Frameworks</h2>
 	      </a>
-	      <p>Introducing the Zephyr Project: overview, architecture, features, and licensing</p>
+	      <p>Robotic Frameworks: Build Instructions and Documentation</p>
      </li>
   </ul> 
 
