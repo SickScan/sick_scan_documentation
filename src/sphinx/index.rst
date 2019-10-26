@@ -17,9 +17,10 @@ SICK AG Scan Base Library (SSBL)
 .. toctree::
    :maxdepth: 2
    :caption: Introduction
-   directions
-   prerequisites
-   getting-started
+
+   Directions
+   Prerequisites
+   Getting-Started
 
 .. toctree::
    :maxdepth: 2
