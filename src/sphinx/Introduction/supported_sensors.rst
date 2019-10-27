@@ -1,3 +1,4 @@
+.. _SupportedHardware:
 =================
 Supported Sensors
 =================
