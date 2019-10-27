@@ -51,6 +51,7 @@ SICK AG Scan Base Library (SSBL)
   Introduction/directions
   Introduction/contributing
   Introduction/supported_sensors
+  Introduction/licensing
   Introduction/faqs
   
 .. toctree::

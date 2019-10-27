@@ -1,3 +1,5 @@
+.. Some phrases here from Atom and Zephyr 
+
 .. _Contributing:
 
 ============
@@ -45,7 +47,7 @@ Contributions can be submitted using Pull Requests, see `GitHub Forking <https:/
 
 * Follow the code / doxygen style used in the source code. It is a interpretation of `Google C++ Style Guide <https://google.github.io/styleguide/cppguide.html>`_.
 * Code must compile with all supported OS / Compiler / Architecture combinations
-* SSBL is licensed under the permissive Apache 2.0 license. We will / can not include code which is using a different license (except for the samples which may use differently licensed 3rd party libraries)
+* SSBL is licensed under the permissive Apache 2.0 license (:ref:`Licensing`). We will / can not include code which is using a different license (except for the samples which may use differently licensed 3rd party libraries)
 * To assure that licencing requirements are met, we require a developer to follow the Developer Certificate of Origin (DCO) process. The DCO is an attestation attached to every contribution made by every developer. In the commit message of the contribution the developer simply adds a Signed-off-by statement and thereby agrees to the DCO. The DCO text can either be manually added to your commit body, or you can add
   either ``-s`` or ``--signoff`` to your usual Git commit commands. 
 
