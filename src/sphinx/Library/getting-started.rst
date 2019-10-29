@@ -1,93 +1,73 @@
+.. _GettingStarted:
+
 ===============
 Getting Started
 ===============
-  
-Obtain the source code
+
+After working through this chapter should be able to build the base library SSBL and run the examples. 
+Skip this chapter if you are rather interested in `ROS / ROS2 <RosFramework>`_  or `NVIDIA Isaac <IsaacFramework>`_.
+
+
+Obtain the Source Code
 ======================
-Library, samples and documentation are kept within separate repositories. The repository ``sick_scan_project`` is a container to bring all of them together. To download the container execute the following commands in folder of your choice:
+Checkout the main repository ``sick_scan_base`` in a folder of your choice by issuing:
 
 .. code-block:: console
 
-  git clone https://github.com/SickScan/sick_scan_project.git ssbl-demo
+  git clone https://github.com/SickScan/sick_scan_base.git 
   
-Then checkout the sources:
+which will give you something like:
 
 .. code-block:: console
   
-  cd ssbl-demo
-  python3 CloneRepos.py
+  Cloning into 'sick_scan_base'...
+  remote: Enumerating objects: 18, done.
+  remote: Counting objects: 100% (18/18), done.
+  remote: Compressing objects: 100% (16/16), done.
+  Rremote: Total 808 (delta 4), reused 12 (delta 2), pack-reused 790eceiving objects:  9
+  Receiving objects: 100% (808/808), 892.05 KiB | 2.05 MiB/s, done.
+  Resolving deltas: 100% (342/342), done.
 
-**CloneRepos.py** is an alternate way to using GIT submodules. When called, it populates the sub-folder ``src`` using GIT commands. Check its output for *git clone* and *git checkout* or have a look into the file to figure out which versions are bundled at moment (for now, we always want HEAD).
-
-.. code-block:: console
-
-  git clone https://github.com/SickScan/sick_scan_base.git src/ssbl
-  Cloning into 'src/ssbl'...
-  remote: Enumerating objects: 189, done.
-  remote: Counting objects: 100% (189/189), done.
-  remote: Compressing objects: 100% (139/139), done.
-  remote: Total 189 (delta 42), reused 178 (delta 35), pack-reused 0
-  Receiving objects: 100% (189/189), 119.49 KiB | 675.00 KiB/s, done.
-  Resolving deltas: 100% (42/42), done.
-  git fetch --all
-  git clone https://github.com/SickScan/sick_scan_base_examples.git src/examples
-  Cloning into 'src/examples'...
-  remote: Enumerating objects: 4, done.
-  remote: Counting objects: 100% (4/4), done.
-  remote: Compressing objects: 100% (3/3), done.
-  remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
-  Unpacking objects: 100% (4/4), done.
-  git fetch --all
-  git clone https://github.com/SickScan/sick_scan_documentation.git src/documentation
-  Cloning into 'src/documentation'...
-  remote: Enumerating objects: 37, done.
-  remote: Counting objects: 100% (37/37), done.
-  remote: Compressing objects: 100% (28/28), done.
-  remote: Total 37 (delta 7), reused 30 (delta 3), pack-reused 0
-  Unpacking objects: 100% (37/37), done.
-  git fetch --all
-
-Build and Install SSBL
-=======================
-
-Building and installing the library involves the following two CMake steps:
-
-1. Configure / Generate the project so that it can be build using your prefered toolchain
-2. Build (create binaries for debug and release) and install (copy binaries, headers, other relevant parts to the desired installation directory)
-
-
-
-
-Windows 10
-----------
-
-Configure and Generate the Library
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Run one of the following commands...
+Now create build directory and ``cd`` into it:
 
 .. code-block:: console
 
-  # Windows 64 Bit builds
-  cmake -G"Visual Studio 16 2019" -A"x64"  ../src/ssbl/src            
-  cmake -G"Visual Studio 15 2017 Win64" ../src/ssbl/src       
-  cmake -G"Visual Studio 14 2015 Win64" ../src/ssbl/src            
-  cmake -G"Visual Studio 16 2019" -A"x64" -T"llvm" ../src/ssbl/src       
-  cmake -G"Eclipse CDT4 - MinGW Makefiles" ../src/ssbl/src
+  cd sick_scan_base
+  mkdir build
+  cd build
 
+
+Configure, Build and Install
+============================
+CMake is a meta-build system to generate native build system files (MSBuild, ninja, make, etc.). Building CMake projects usually involves two to three steps:
+
+1. A configuration step, in which CMake generates build files for the native build system
+2. A build step, in which the native build system is called and the binaries are created
+3. An optional installation step in which binaries, headers and other files are copied to a user defined installation directory
+
+Unfortunatelly, CMake is not able to fully abstract the underlying native build system. Therefore, configuration parameters and steps vary slightly between OS / Build System / Compiler. The following sequences will build a static and a shared version of the library in debug and release mode and install the library in ``sick_scan_base/build/install``.
+
+Windows, Visual Studio 2015,17,19 IDE, MSBuild, and Visual C++ or LLVM Compiler
+-------------------------------------------------------------------------------
+
+1. Configure the project, architecture is set up at configuration time
 
 .. code-block:: console
 
-  # Windows 32 Bit builds
-  cmake -G"Visual Studio 16 2019" -A"Win32" ../src/ssbl/src
-  cmake -G"Visual Studio 15 2017" ../src/ssbl/src
-  cmake -G"Visual Studio 14 2015" ../src/ssbl/src
-  cmake -G"Visual Studio 16 2019" -A"Win32" -T"llvm" ../src/ssbl/src
-  cmake -G"Eclipse CDT4 - MinGW Makefiles" -DSSBL_32BIT ../src/ssbl/src
+  # 64 Bit builds
+  cmake -G"Visual Studio 16 2019" -A"x64"            -DCMAKE_INSTALL_PREFIX=./install ..
+  cmake -G"Visual Studio 15 2017 Win64"              -DCMAKE_INSTALL_PREFIX=./install ..
+  cmake -G"Visual Studio 14 2015 Win64"              -DCMAKE_INSTALL_PREFIX=./install ..
+  cmake -G"Visual Studio 16 2019" -A"x64" -T"llvm"   -DCMAKE_INSTALL_PREFIX=./install ..  
 
-Build and Install the Library
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Build and install the debug and the release target using:
+  # 32 Bit builds
+  cmake -G"Visual Studio 16 2019" -A"Win32"          -DCMAKE_INSTALL_PREFIX=./install ..
+  cmake -G"Visual Studio 15 2017"                    -DCMAKE_INSTALL_PREFIX=./install ..
+  cmake -G"Visual Studio 14 2015"                    -DCMAKE_INSTALL_PREFIX=./install ..
+  cmake -G"Visual Studio 16 2019" -A"Win32" -T"llvm" -DCMAKE_INSTALL_PREFIX=./install ..
+
+
+2. Build and install the library in debug and release mode
 
 .. code-block:: console
 
@@ -95,40 +75,56 @@ Build and install the debug and the release target using:
   cmake --build . --target install --config Release
 
 
-Linux
------
+Linux, No IDE, Ninja, GCC
+-------------------------
 
-Configure, Generate, Build and Install the Debug Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: console
-
-  cmake -G"Eclipse CDT4 - Ninja" -DCMAKE_BUILD_TYPE=Debug ../src
-  cmake --build . --target install --config Debug
-
-
-Configure, Generate, Build and Install the Release Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Configure the project, architecture and build mode is set up at configuration time
 
 .. code-block:: console
 
-  cmake -G"Eclipse CDT4 - Ninja" -DCMAKE_BUILD_TYPE=Release ../src
-  cmake --build . --target install --config Release
+  # 64 Bit builds
+  cmake -G"Ninja" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=./install ..
+  
+  # 32 Bit builds
+  cmake -G"Ninja" -DSSBL_32BIT=1 -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=./install ..  
 
-
-Additional Build Flags
-----------------------
-
-The installation directory can be changed by adding:
+2. Build and install the library
 
 .. code-block:: console
 
-  -DSSBL_INSTALL_DIR="your preferd installation directory"
+  cmake --build . --target install
+
+3. Reconfigure the project to be build in release mode
+
+.. code-block:: console
+
+  # 64 Bit builds
+  cmake -G"Ninja" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./install ..
+  # 32 Bit builds
+  cmake -G"Ninja" -DSSBL_32BIT -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./install ..  
+
+4. Build and install the library
+
+.. code-block:: console
+
+  cmake --build . --target install
+
+
+Additional CMake Command Line Arguments
+=======================================
+
+The are a few CMake variables which can be set to adjust the build process when configuring the project.
 
 
 
-Build the Samples
-=================
+
+.. code-block:: console
+
+  -DVARIABLE"value"
+
+
+
+
 
 
 
